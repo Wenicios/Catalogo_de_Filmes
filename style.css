@@ -1,0 +1,265 @@
+/* Importação de Fonte e Estilos Gerais */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap");
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #131722;
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    color: #eee;
+}
+
+/* Cabeçalho e Busca */
+header {
+    background-color: #1a202c;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#home-btn {
+    background-color: #fff;
+    color: #007bff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#home-btn:hover {
+    background-color: #0056b3;
+}
+
+.search {
+    background-color: whitesmoke;
+    border: 2px solid #131722;
+    border-radius: 50px;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.search::placeholder {
+    color: #7378c5;
+}
+
+.search:focus {
+    background-color: #131722;
+    outline: none;
+}
+
+/* Container Principal e Cards de Filmes */
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.movie {
+    width: 300px;
+    margin: 1rem;
+    background-color: #1a202c;
+    border-radius: 5px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.movie img {
+    width: 100%;
+}
+
+.movie-info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 1rem 1rem;
+    letter-spacing: 0.5px;
+}
+
+.movie-info h3 {
+    margin: 0;
+}
+
+.movie-info span {
+    background-color: #131722;
+    padding: 0.25rem 0.5rem;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+.movie-info span.green { color: lightgreen; }
+.movie-info span.orange { color: orange; }
+.movie-info span.red { color: red; }
+
+/* Sinopse (Hover) */
+.overview {
+    background-color: #f8f9fae5;
+    color: #131722;
+    padding: 2rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    max-height: 100%;
+    transform: translateY(101%);
+    transition: transform 0.3s ease-in;
+    overflow: auto;
+}
+
+.movie:hover .overview {
+    transform: translateY(0);
+}
+
+/* Paginação */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+}
+
+.pagination-btn {
+    background-color: #007bff;
+    color: #f7f7f7;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    margin: 0 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pagination-btn:hover { background-color: #0056b3; }
+.pagination-btn:disabled { background-color: #cccccc; cursor: not-allowed; }
+
+#current-page {
+    font-size: 1.0rem;
+    font-weight: bold;
+}
+
+/* Loading Spinner */
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #007bff;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Modal de Detalhes */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+    padding: 1rem;
+}
+
+.modal-content {
+    background-color: #1a202c;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 800px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #f7f7f7;
+    cursor: pointer;
+    line-height: 1;
+}
+
+#modal-body {
+    padding: 2rem;
+    display: grid;
+    gap: 1.5rem;
+}
+
+.modal-poster {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+
+.modal-title {
+    font-size: 2.2rem;
+    margin: 0;
+    color: #007bff;
+}
+
+.modal-overview, .modal-info {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.modal-info p {
+    margin: 0.5rem 0;
+}
+
+#modal-trailer-container iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    border: none;
+    border-radius: 5px;
+}
+
+@media (min-width: 768px) {
+    #modal-body {
+        grid-template-columns: 300px 1fr;
+        text-align: left;
+    }
+    .modal-poster { grid-row: 1 / 4; }
+    .modal-title { grid-column: 2 / 3; }
+    .modal-overview { grid-column: 2 / 3; }
+    .modal-info { grid-column: 2 / 3; }
+    #modal-trailer-container { grid-column: 1 / 3; }
+}
+
+/* Classes Utilitárias */
+.hidden {
+    display: none;
+}

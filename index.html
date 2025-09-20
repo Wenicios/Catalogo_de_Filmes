@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo de Filmes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <button id="home-btn">Início</button>
+        <form id="form">
+            <input type="text" placeholder="Buscar Filme..." class="search" />
+        </form>
+    </header>
+
+    <div id="loading-spinner" class="spinner-container hidden">
+        <div class="spinner"></div>
+    </div>
+
+    <main></main>
+
+    <div class="pagination">
+        <button id="prev-btn" class="pagination-btn">Anterior</button>
+        <span id="current-page">1</span>
+        <button id="next-btn" class="pagination-btn">Próximo</button>
+    </div>
+
+    <div id="movie-details-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button class="close-modal-btn">&times;</button>
+            <div id="modal-body">
+                </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
